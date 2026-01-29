@@ -98,6 +98,19 @@
     </table>
     </br></br>
     <button type="button" onclick="calculate()">Calculate</button>
+    </br>
+    <p>Results listed below</p>
+    </br>
+    <table>
+        <tr>
+            <th>Total Weight (MT)</th>
+            <th>Heeling Moment (MT.m)</th>
+        </tr>
+        <tr>
+            <th id="weight"></th>
+            <td id="resultMoment"></td>
+        </tr>
+    </table>
     </br></br>
     <table>
       <tr>
@@ -230,6 +243,12 @@
             document.getElementById("R4t").innerHTML = R4;
             document.getElementById("R5t").innerHTML = R5;
             document.getElementById("R6t").innerHTML = R6;
+            let weight = R1+R2+R3+R4+R5+R6;
+            let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/weight;
+            let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/weight;
+            let resultMoment = sqrt(resultMomentX^2 + resultMomentY^2);
+            document.getElementById("weight").innerHTML = weight;
+            document.getElementById("resultMoment").innerHTML = resultMoment;
         }
     </script>
 </body>
