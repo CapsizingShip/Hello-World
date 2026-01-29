@@ -111,14 +111,20 @@
     </br>
     <table>
         <tr>
-            <th></th>
-            <th>Total Weight (MT)</th>
-            <th>Heeling Moment (MT.m)</th>
+            <td>Total Weight (MT)</td>
+            <td id="weight"></td>
         </tr>
         <tr>
-            <td>Value</td>
-            <td id="weight"></td>
+            <td>Heeling Moment (MT.m)</td>
             <td id="resultMoment"></td>
+        </tr>
+        <tr>
+            <td>CoGx (mm)</td>
+            <td id="CoGx"></td>
+        </tr>
+        <tr>
+            <td>CoGy (mm)</td>
+            <td id="CoGy"></td>
         </tr>
     </table>
     </br>
@@ -277,13 +283,17 @@
             document.getElementById("R6t").innerHTML = R6;
             
             let weight = R1+R2+R3+R4+R5+R6;
-            let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/weight;
-            let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/weight;
+            let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/1000;
+            let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/1000;
+            let CoGx = resultMomentX*1000/weight;
+            let CoGy = resultMomentY*1000/weight;
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
             let T2Adjust = (resultMomentX*1000-(resultMomentY*1000*T1x/T1y))/(-T2x-T3x+(T2y+T3y)*T1x/T1y);
             let T3Adjust = T2Adjust;
             document.getElementById("weight").innerHTML = weight;
             document.getElementById("resultMoment").innerHTML = resultMoment;
+            document.getElementById("CoGx").innerHTML = CoGx;
+            document.getElementById("CoGy").innerHTML = CoGy;
             document.getElementById("T2Adjust").innerHTML = T2Adjust;
             document.getElementById("T3Adjust").innerHTML = T3Adjust;
         }
