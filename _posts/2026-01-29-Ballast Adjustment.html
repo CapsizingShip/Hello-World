@@ -65,6 +65,37 @@
             <td id="T3y">-1064.1</td>
         </tr>
     </table>
+    </br>
+    <table>
+        <tr>
+            <th>Loadcell #</th>
+            <th>Readings(MT)</th>
+        </tr>
+        <tr>
+            <td>Loadcell 1</td>
+            <td><input type="number" id="R1" name="R1"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 2</td>
+            <td><input type="number" id="R2" name="R2"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 3</td>
+            <td><input type="number" id="R3" name="R3"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 4</td>
+            <td><input type="number" id="R4" name="R4"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 5</td>
+            <td><input type="number" id="R5" name="R5"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 6</td>
+            <td><input type="number" id="R6" name="R6"></td>
+        </tr>
+    </table>
     </br></br>
     <button type="button" onclick="calculate()">Calculate</button>
     </br></br>
@@ -96,6 +127,7 @@
           <td id="Y5t"></td>
           <td id="Y6t"></td>
       </tr>
+    </table>
     <table>
         <tr>
             <th>Turntable counter weight location</th>
@@ -119,7 +151,34 @@
         </tr>
     </table>
     <table>
-        
+        <tr>
+            <th>Loadcell #</th>
+            <th>Readings(MT)</th>
+        </tr>
+        <tr>
+            <td>Loadcell 1</td>
+            <td id="R1t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 2</td>
+            <td id="R2t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 3</td>
+            <td id="R3t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 4</td>
+            <td id="R4t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 5</td>
+            <td id="R5t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 6</td>
+            <td id="R6t"></td>
+        </tr>
     </table>
     <script>
         function calculate() {
@@ -141,6 +200,12 @@
             const T2y = Number(document.getElementById("T2y").textContent)
             const T3x = Number(document.getElementById("T3x").textContent)
             const T3y = Number(document.getElementById("T3y").textContent)
+            const R1 = document.getElementById("R1").value
+            const R2 = document.getElementById("R2").value
+            const R3 = document.getElementById("R3").value
+            const R4 = document.getElementById("R4").value
+            const R5 = document.getElementById("R5").value
+            const R6 = document.getElementById("R6").value
             document.getElementById("X1t").innerHTML = X1;
             document.getElementById("X2t").innerHTML = X2;
             document.getElementById("X3t").innerHTML = X3;
@@ -159,6 +224,12 @@
             document.getElementById("T2yt").innerHTML = T2y;
             document.getElementById("T3xt").innerHTML = T3x;
             document.getElementById("T3yt").innerHTML = T3y;
+            document.getElementById("R1t").innerHTML = R1;
+            document.getElementById("R2t").innerHTML = R2;
+            document.getElementById("R3t").innerHTML = R3;
+            document.getElementById("R4t").innerHTML = R4;
+            document.getElementById("R5t").innerHTML = R5;
+            document.getElementById("R6t").innerHTML = R6;
         }
     </script>
 </body>
