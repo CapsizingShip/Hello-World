@@ -248,10 +248,9 @@
             let weight = R1+R2+R3+R4+R5+R6;
             let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/weight;
             let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/weight;
-            let resultMoment = sqrt(resultMomentX^2 + resultMomentY^2);
+            let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
             document.getElementById("weight").innerHTML = weight;
             document.getElementById("resultMoment").innerHTML = resultMoment;
-            document.write(weight);
         }
     </script>
 </body>
