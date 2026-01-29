@@ -135,12 +135,12 @@
             const Y4 = document.getElementById("Y4").value
             const Y5 = document.getElementById("Y5").value
             const Y6 = document.getElementById("Y6").value
-            const T1x = document.getElementById("T1x").textContent
-            const T1y = document.getElementById("T1y").textContent
-            const T2x = document.getElementById("T2x").textContent
-            const T2y = document.getElementById("T2y").textContent
-            const T3x = document.getElementById("T3x").textContent
-            const T3y = document.getElementById("T3y").textContent
+            const T1x = Number(document.getElementById("T1x").textContent)
+            const T1y = Number(document.getElementById("T1y").textContent)
+            const T2x = Number(document.getElementById("T2x").textContent)
+            const T2y = Number(document.getElementById("T2y").textContent)
+            const T3x = Number(document.getElementById("T3x").textContent)
+            const T3y = Number(document.getElementById("T3y").textContent)
             document.getElementById("X1t").innerHTML = X1;
             document.getElementById("X2t").innerHTML = X2;
             document.getElementById("X3t").innerHTML = X3;
@@ -153,12 +153,12 @@
             document.getElementById("Y4t").innerHTML = Y4;
             document.getElementById("Y5t").innerHTML = Y5;
             document.getElementById("Y6t").innerHTML = Y6;
-            document.getElementById("T1xt").innerHTML = Number(T1x);
-            document.getElementById("T1yt").textContent = T1y;
-            document.getElementById("T2xt").textContent = T2x;
-            document.getElementById("T2yt").textContent = T2y;
-            document.getElementById("T3xt").textContent = T3x;
-            document.getElementById("T3yt").textContent = T3y;
+            document.getElementById("T1xt").innerHTML = T1x;
+            document.getElementById("T1yt").innerHTML = T1y;
+            document.getElementById("T2xt").innerHTML = T2x;
+            document.getElementById("T2yt").innerHTML = T2y;
+            document.getElementById("T3xt").innerHTML = T3x;
+            document.getElementById("T3yt").innerHTML = T3y;
         }
     </script>
 </body>
