@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>Ballast Adjustment</h1>
+    <h1>Par Hawaii Ballast Adjustment</h1>
     <table>
       <tr>
           <th>Distance from Buoy CL</th>
@@ -43,6 +43,28 @@
       </tr>
     </table>
     </br>
+    <table>
+        <tr>
+            <th>Turntable counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1x">0</td>
+            <td id="T1y">6915.8</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2x">6734.1</td>
+            <td id="T2y">1064.1</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3x">6734.1</td>
+            <td id="T3y">-1064.1</td>
+        </tr>
+    </table>
     <button type="button" onclick="calculate()">Calculate</button>
     </br></br>
         <table>
@@ -73,6 +95,28 @@
           <td id="Y5t"></td>
           <td id="Y6t"></td>
       </tr>
+      <table>
+        <tr>
+            <th>Turntable counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1xt">0</td>
+            <td id="T1yt">6915.8</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2xt">6734.1</td>
+            <td id="T2yt">1064.1</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3xt">6734.1</td>
+            <td id="T3yt">-1064.1</td>
+        </tr>
+    </table>
     <script>
         function calculate() {
             const X1 = document.getElementById("X1").value
@@ -87,6 +131,12 @@
             const Y4 = document.getElementById("Y4").value
             const Y5 = document.getElementById("Y5").value
             const Y6 = document.getElementById("Y6").value
+            const T1x = document.getElementById("T1x").value
+            const T1y = document.getElementById("T1y").value
+            const T2x = document.getElementById("T2x").value
+            const T2y = document.getElementById("T2y").value
+            const T3x = document.getElementById("T3x").value
+            const T3y = document.getElementById("T3y").value
             document.getElementById("X1t").innerHTML = X1;
             document.getElementById("X2t").innerHTML = X2;
             document.getElementById("X3t").innerHTML = X3;
@@ -99,6 +149,12 @@
             document.getElementById("Y4t").innerHTML = Y4;
             document.getElementById("Y5t").innerHTML = Y5;
             document.getElementById("Y6t").innerHTML = Y6;
+            document.getElementById("T1xt").innerHTML = T1x;
+            document.getElementById("T1yt").innerHTML = T1y;
+            document.getElementById("T2xt").innerHTML = T2x;
+            document.getElementById("T2yt").innerHTML = T2y;
+            document.getElementById("T3xt").innerHTML = T3x;
+            document.getElementById("T3yt").innerHTML = T3y;
         }
     </script>
 </body>
