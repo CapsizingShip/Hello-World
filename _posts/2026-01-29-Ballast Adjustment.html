@@ -42,10 +42,51 @@
           <td><input type="number" id="Y6" name="Y6"></td>
       </tr>
     </table>
-    <button type="button" onclick="calculate()">Click Me!</button>
+    </br>
+    <button type="button" onclick="calculate()">Calculate</button>
+    </br>
+        <table>
+      <tr>
+          <th>Distance from Buoy CL</th>
+          <th>Loadcell 1</th>
+          <th>Loadcell 2</th>
+          <th>Loadcell 3</th>
+          <th>Loadcell 4</th>
+          <th>Loadcell 5</th>
+          <th>Loadcell 6</th>
+      </tr>
+      <tr>
+          <td>X (mm)</td>
+          <td id="X1t"></td>
+          <td id="X2t"></td>
+          <td id="X3t"></td>
+          <td id="X4t"></td>
+          <td id="X5t"></td>
+          <td id="X6t"></td>
+      </tr>
+      <tr>
+          <td>Y (mm)</td>
+          <td id="Y1t"></td>
+          <td id="Y2t"></td>
+          <td id="Y3t"></td>
+          <td id="Y4t"></td>
+          <td id="Y5t"></td>
+          <td id="Y6t"></td>
+      </tr>
     <script>
         function calculate() {
-            document.getElementById("X1").innerHTML = 123;
+            document.getElementById("X1t").innerHTML = X1;
+            document.getElementById("X2t").innerHTML = X2;
+            document.getElementById("X3t").innerHTML = X3;
+            document.getElementById("X4t").innerHTML = X4;
+            document.getElementById("X5t").innerHTML = X5;
+            document.getElementById("X6t").innerHTML = X6;
+            document.getElementById("Y1t").innerHTML = Y1;
+            document.getElementById("Y2t").innerHTML = Y2;
+            document.getElementById("Y3t").innerHTML = Y3;
+            document.getElementById("Y4t").innerHTML = Y4;
+            document.getElementById("Y5t").innerHTML = Y5;
+            document.getElementById("Y6t").innerHTML = Y6;
         }
     </script>
 </body>
