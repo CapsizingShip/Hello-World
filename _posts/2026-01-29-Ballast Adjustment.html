@@ -290,12 +290,14 @@
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
             let T2Adjust = (resultMomentX*1000-(resultMomentY*1000*T1x/T1y))/(-T2x-T3x+(T2y+T3y)*T1x/T1y);
             let T3Adjust = T2Adjust;
+            let T1Adjust = -(resultMomentY*1000+T2Adjust*(T2y+T3y))/T1y;
             document.getElementById("weight").innerHTML = weight.toFixed(3);
             document.getElementById("resultMoment").innerHTML = resultMoment.toFixed(3);
             document.getElementById("CoGx").innerHTML = CoGx.toFixed(3);
             document.getElementById("CoGy").innerHTML = CoGy.toFixed(3);
             document.getElementById("T2Adjust").innerHTML = T2Adjust.toFixed(3);
             document.getElementById("T3Adjust").innerHTML = T3Adjust.toFixed(3);
+            document.getElementById("T1Adjust").innerHTML = T1Adjust.toFixed(3);
         }
     </script>
 </body>
