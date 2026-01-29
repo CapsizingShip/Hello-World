@@ -9,8 +9,11 @@ date: 2026-01-29
 
 <button type="button" onclick="calculate()">Calculate</button>
 
+
+
 <script>
 function calculate() {
   document.getElementById("X1").innerHTML = 123;
+  document.write("This content is written directly to the document.");
 }
 </script>
