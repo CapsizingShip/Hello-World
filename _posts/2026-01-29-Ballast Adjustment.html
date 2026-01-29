@@ -121,6 +121,7 @@
             <td id="resultMoment"></td>
         </tr>
     </table>
+    <!--
     </br></br>
     <table>
       <tr>
@@ -203,6 +204,7 @@
             <td id="R6t"></td>
         </tr>
     </table>
+    -->
     <script>
         function calculate() {
             const X1 = Number(document.getElementById("X1").value)
@@ -229,6 +231,7 @@
             const R4 = Number(document.getElementById("R4").value)
             const R5 = Number(document.getElementById("R5").value)
             const R6 = Number(document.getElementById("R6").value)
+            /*
             document.getElementById("X1t").innerHTML = X1;
             document.getElementById("X2t").innerHTML = X2;
             document.getElementById("X3t").innerHTML = X3;
@@ -253,6 +256,7 @@
             document.getElementById("R4t").innerHTML = R4;
             document.getElementById("R5t").innerHTML = R5;
             document.getElementById("R6t").innerHTML = R6;
+            */
             let weight = R1+R2+R3+R4+R5+R6;
             let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/weight;
             let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/weight;
