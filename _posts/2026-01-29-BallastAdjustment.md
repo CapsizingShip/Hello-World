@@ -11,9 +11,5 @@ date: 2026-01-29
 
 
 
-<script>
-function calculate() {
-  document.getElementById("X1").innerHTML = 123;
-  document.write("This content is written directly to the document.");
-}
+<script src="Script.js">
 </script>
