@@ -279,8 +279,12 @@
             let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/weight;
             let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/weight;
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
+            let T2Adjust = (resultMomentX*1000-(resultMomentY*1000*T1x/T1y))/(-T2x-T3x+(T2y+T3y)*T1x/T1y);
+            let T3Adjust = T2Adjust;
             document.getElementById("weight").innerHTML = weight;
             document.getElementById("resultMoment").innerHTML = resultMoment;
+            document.getElementById("T2Adjust").innerHTML = T2Adjust;
+            document.getElementById("T3Adjust").innerHTML = T3Adjust;
         }
     </script>
 </body>
