@@ -11,6 +11,6 @@ date: 2026-01-29
 
 <script>
 function calculate() {
-  document.getElementById("X1").innerHTML = "Hello World!";
+  document.getElementById("X1").innerHTML = 123;
 }
 </script>
