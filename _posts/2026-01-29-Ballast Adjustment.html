@@ -67,7 +67,7 @@
     </table>
     <button type="button" onclick="calculate()">Calculate</button>
     </br></br>
-        <table>
+    <table>
       <tr>
           <th>Distance from Buoy CL</th>
           <th>Loadcell 1</th>
@@ -95,7 +95,7 @@
           <td id="Y5t"></td>
           <td id="Y6t"></td>
       </tr>
-      <table>
+    <table>
         <tr>
             <th>Turntable counter weight location</th>
             <th>X(mm)</th>
@@ -103,19 +103,22 @@
         </tr>
         <tr>
             <td>T1 (Max 21.2MT)</td>
-            <td id="T1xt">0</td>
-            <td id="T1yt">6915.8</td>
+            <td id="T1xt"></td>
+            <td id="T1yt"></td>
         </tr>
         <tr>
             <td>T2 (Max 12.9MT)</td>
-            <td id="T2xt">6734.1</td>
-            <td id="T2yt">1064.1</td>
+            <td id="T2xt"></td>
+            <td id="T2yt"></td>
         </tr>
         <tr>
             <td>T2 (Max 12.9MT)</td>
-            <td id="T3xt">6734.1</td>
-            <td id="T3yt">-1064.1</td>
+            <td id="T3xt"></td>
+            <td id="T3yt"></td>
         </tr>
+    </table>
+    <table>
+        
     </table>
     <script>
         function calculate() {
@@ -149,12 +152,12 @@
             document.getElementById("Y4t").innerHTML = Y4;
             document.getElementById("Y5t").innerHTML = Y5;
             document.getElementById("Y6t").innerHTML = Y6;
-            document.getElementById("T1xt").innerHTML = T1x;
-            document.getElementById("T1yt").innerHTML = T1y;
-            document.getElementById("T2xt").innerHTML = T2x;
-            document.getElementById("T2yt").innerHTML = T2y;
-            document.getElementById("T3xt").innerHTML = T3x;
-            document.getElementById("T3yt").innerHTML = T3y;
+            document.getElementById("T1xt").textContent = T1x;
+            document.getElementById("T1yt").textContent = T1y;
+            document.getElementById("T2xt").textContent = T2x;
+            document.getElementById("T2yt").textContent = T2y;
+            document.getElementById("T3xt").textContent = T3x;
+            document.getElementById("T3yt").textContent = T3y;
         }
     </script>
 </body>
