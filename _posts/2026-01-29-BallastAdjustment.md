@@ -9,5 +9,8 @@ date: 2026-01-29
 
 <button type="button" onclick="calculate()">Calculate</button>
 
-<script src="script.js">
+<script>
+function calculate() {
+  document.getElementById("X1").innerHTML = "Hello World!";
+}
 </script>
