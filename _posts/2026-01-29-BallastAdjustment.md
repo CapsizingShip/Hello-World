@@ -9,7 +9,5 @@ date: 2026-01-29
 
 <button type="button" onclick="calculate()">Calculate</button>
 
-
-
 <script src="Script.js">
 </script>
