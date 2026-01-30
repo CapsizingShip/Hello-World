@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "My First Post"
+title: "Par Hawaii Ballast Adjustment"
 date: 2026-01-29
 ---
 
 <body>
-    <h1>Par Hawaii Ballast Adjustment</h1>
     <p>Cell highlighted in yellow for user input</p>
     <p>Current Turntable Rotation Angle (Clockwise):<input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
     <table>
