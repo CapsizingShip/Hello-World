@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "My Second Post"
+title: "Sensei Snake Game"
 date: 2026-01-30
 ---
 
