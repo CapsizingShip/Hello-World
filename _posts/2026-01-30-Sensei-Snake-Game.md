@@ -4,85 +4,183 @@ title: "Sensei Snake Game"
 date: 2026-01-30
 ---
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Snake Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake Game (Mobile)</title>
   <style>
+    :root {
+      --bg: #111;
+      --panel: #222;
+      --accent: #4caf50;
+      --accent2: #81c784;
+      --food: #e53935;
+      --grid: #333;
+      --text: #eee;
+    }
+    * { box-sizing: border-box; }
     body {
-      background: #111;
-      color: #eee;
+      background: var(--bg);
+      color: var(--text);
       font-family: Arial, sans-serif;
+      margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 0;
-      padding: 20px;
+      min-height: 100vh;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .container {
+      width: 100%;
+      max-width: 520px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
     #game {
-      border: 2px solid #4caf50;
-      background: #222;
+      border: 2px solid var(--accent);
+      background: var(--panel);
+      touch-action: none; /* allow custom swipe handling */
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1 / 1; /* square canvas responsive */
     }
     .info {
-      margin-top: 10px;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
     }
-    button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background: #4caf50;
-      border: none;
+    .controls {
+      display: grid;
+      grid-template-columns: 80px 80px 80px;
+      grid-template-rows: 80px 80px 80px;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 6px;
+      touch-action: manipulation;
+      user-select: none;
+    }
+    .btn {
+      background: var(--accent);
       color: #fff;
-      cursor: pointer;
-      border-radius: 4px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      width: 80px;
+      height: 80px;
     }
-    button:hover {
-      background: #43a047;
+    .btn:active { background: #43a047; }
+    .btn.small {
+      height: 40px;
+      border-radius: 6px;
+      font-size: 14px;
+      padding: 8px 12px;
+      width: auto;
     }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
-  <canvas id="game" width="400" height="400"></canvas>
-  <div class="info">Score: <span id="score">0</span></div>
-  <button id="restart">Restart</button>
+  <div class="container">
+    <canvas id="game"></canvas>
+
+    <div class="info">
+      <div>Score: <span id="score">0</span></div>
+      <div>
+        <button id="pauseBtn" class="btn small">Pause</button>
+        <button id="restartBtn" class="btn small">Restart</button>
+      </div>
+    </div>
+
+    <!-- On-screen directional pad -->
+    <div class="controls" id="controls">
+      <div></div>
+      <button class="btn" id="up">▲</button>
+      <div></div>
+      <button class="btn" id="left">◀</button>
+      <div></div>
+      <button class="btn" id="right">▶</button>
+      <div></div>
+      <button class="btn" id="down">▼</button>
+      <div></div>
+    </div>
+  </div>
 
   <script>
+    // Responsive canvas setup
     const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
-    const scoreEl = document.getElementById('score');
-    const restartBtn = document.getElementById('restart');
+    const ctx = canvas.getContext('2d', { alpha: false });
 
-    const gridSize = 20;       // pixels per cell
-    const tileCount = canvas.width / gridSize; // 20x20 grid
-    const initialSpeedMs = 120;
+    function resizeCanvas() {
+      // Match CSS size (which maintains square via aspect-ratio)
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width);
+      canvas.height = Math.floor(rect.height);
+      // Recompute tileCount based on gridSize
+      tileCount = Math.floor(canvas.width / gridSize);
+      // Keep it square by using min dimension
+      const minDim = Math.min(canvas.width, canvas.height);
+      canvas.width = canvas.height = minDim;
+      tileCount = Math.floor(minDim / gridSize);
+      // Ensure min grid dimension
+      if (tileCount < 10) {
+        gridSize = Math.floor(minDim / 20);
+        tileCount = Math.floor(minDim / gridSize);
+      }
+      draw(); // redraw after resize
+    }
+
+    // Game variables
+    let gridSize = 20;
+    let tileCount = 20; // will be updated on resize
+    const initialSpeedMs = 130;
 
     let snake = [];
-    let direction = { x: 1, y: 0 }; // start moving right
+    let direction = { x: 1, y: 0 };
     let nextDirection = { x: 1, y: 0 };
     let food = { x: 10, y: 10 };
     let score = 0;
     let speedMs = initialSpeedMs;
     let timerId = null;
     let gameOver = false;
+    let paused = false;
+
+    // Touch swipe detection
+    let touchStart = null;
 
     function resetGame() {
-      snake = [
-        { x: 8, y: 10 },
-        { x: 7, y: 10 },
-        { x: 6, y: 10 }
-      ];
-      direction = { x: 1, y: 0 };
-      nextDirection = { x: 1, y: 0 };
       score = 0;
       speedMs = initialSpeedMs;
       gameOver = false;
-      scoreEl.textContent = score;
+      paused = false;
+      direction = { x: 1, y: 0 };
+      nextDirection = { x: 1, y: 0 };
+      // Center-start snake
+      const cx = Math.floor(tileCount / 2);
+      const cy = Math.floor(tileCount / 2);
+      snake = [{ x: cx, y: cy }, { x: cx - 1, y: cy }, { x: cx - 2, y: cy }];
       placeFood();
+      updateScore();
       if (timerId) clearInterval(timerId);
       timerId = setInterval(gameLoop, speedMs);
-      draw(); // immediate draw
+      draw();
     }
 
     function placeFood() {
-      // Place food not on the snake
       let valid = false;
       while (!valid) {
         food.x = Math.floor(Math.random() * tileCount);
@@ -92,51 +190,43 @@ date: 2026-01-30
     }
 
     function gameLoop() {
-      if (gameOver) return;
+      if (gameOver || paused) return;
 
-      // Update direction from buffered input
       direction = nextDirection;
+      const newHead = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-      // Compute new head
-      const newHead = {
-        x: snake[0].x + direction.x,
-        y: snake[0].y + direction.y
-      };
+      // Wrap-around walls (mobile-friendly)
+      newHead.x = (newHead.x + tileCount) % tileCount;
+      newHead.y = (newHead.y + tileCount) % tileCount;
 
-      // Check wall collision
-      if (
-        newHead.x < 0 || newHead.x >= tileCount ||
-        newHead.y < 0 || newHead.y >= tileCount
-      ) {
-        endGame();
-        return;
-      }
-
-      // Check self collision
+      // Self collision
       if (snake.some(seg => seg.x === newHead.x && seg.y === newHead.y)) {
         endGame();
         return;
       }
 
-      // Move snake
       snake.unshift(newHead);
 
-      // Check food
+      // Food check
       if (newHead.x === food.x && newHead.y === food.y) {
         score += 10;
-        scoreEl.textContent = score;
+        updateScore();
         placeFood();
-        // Optional: speed up modestly
-        if (speedMs > 60) {
+        // gentle speed-up
+        if (speedMs > 70) {
           speedMs -= 5;
           clearInterval(timerId);
           timerId = setInterval(gameLoop, speedMs);
         }
       } else {
-        snake.pop(); // remove tail if no food
+        snake.pop();
       }
 
       draw();
+    }
+
+    function updateScore() {
+      document.getElementById('score').textContent = score;
     }
 
     function draw() {
@@ -144,7 +234,7 @@ date: 2026-01-30
       ctx.fillStyle = '#222';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw grid (optional light grid)
+      // Optional grid
       ctx.strokeStyle = '#333';
       ctx.lineWidth = 1;
       for (let i = 1; i < tileCount; i++) {
@@ -158,11 +248,11 @@ date: 2026-01-30
         ctx.stroke();
       }
 
-      // Draw food
+      // Food
       ctx.fillStyle = '#e53935';
       drawCell(food.x, food.y);
 
-      // Draw snake
+      // Snake
       for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = i === 0 ? '#4caf50' : '#81c784';
         drawCell(snake[i].x, snake[i].y);
@@ -176,7 +266,7 @@ date: 2026-01-30
         ctx.font = '20px Arial';
         ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 10);
         ctx.font = '14px Arial';
-        ctx.fillText('Press Restart to play again', canvas.width / 2, canvas.height / 2 + 20);
+        ctx.fillText('Tap Restart to play again', canvas.width / 2, canvas.height / 2 + 20);
       }
     }
 
@@ -190,20 +280,85 @@ date: 2026-01-30
       draw();
     }
 
-    // Controls
+    // Controls: buttons
+    function setDir(dx, dy) {
+      // Prevent reversing into self
+      if ((dx === 1 && direction.x === -1) || (dx === -1 && direction.x === 1) ||
+          (dy === 1 && direction.y === -1) || (dy === -1 && direction.y === 1)) {
+        return;
+      }
+      nextDirection = { x: dx, y: dy };
+    }
+
+    document.getElementById('up').addEventListener('click', () => setDir(0, -1));
+    document.getElementById('down').addEventListener('click', () => setDir(0, 1));
+    document.getElementById('left').addEventListener('click', () => setDir(-1, 0));
+    document.getElementById('right').addEventListener('click', () => setDir(1, 0));
+
+    // Keyboard for desktop
     window.addEventListener('keydown', (e) => {
-      const key = e.key;
-      // Prevent reversing directly into self
-      if (key === 'ArrowUp' && direction.y !== 1) nextDirection = { x: 0, y: -1 };
-      else if (key === 'ArrowDown' && direction.y !== -1) nextDirection = { x: 0, y: 1 };
-      else if (key === 'ArrowLeft' && direction.x !== 1) nextDirection = { x: -1, y: 0 };
-      else if (key === 'ArrowRight' && direction.x !== -1) nextDirection = { x: 1, y: 0 };
+      const k = e.key;
+      if (k === 'ArrowUp') setDir(0, -1);
+      else if (k === 'ArrowDown') setDir(0, 1);
+      else if (k === 'ArrowLeft') setDir(-1, 0);
+      else if (k === 'ArrowRight') setDir(1, 0);
+      else if (k.toLowerCase() === 'p') togglePause();
     });
 
-    restartBtn.addEventListener('click', resetGame);
+    // Touch swipe for direction
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        const t = e.touches[0];
+        touchStart = { x: t.clientX, y: t.clientY, time: Date.now() };
+      }
+    }, { passive: true });
 
-    // Start
+    canvas.addEventListener('touchend', (e) => {
+      if (!touchStart) return;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - touchStart.x;
+      const dy = touch.clientY - touchStart.y;
+      const dt = Date.now() - touchStart.time;
+      const minDist = 20; // minimum swipe distance
+      const maxTime = 500; // swipe time
+
+      if (dt < maxTime && (Math.abs(dx) > minDist || Math.abs(dy) > minDist)) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+          setDir(dx > 0 ? 1 : -1, 0);
+        } else {
+          setDir(0, dy > 0 ? 1 : -1);
+        }
+      } else {
+        // Tap toggles pause
+        togglePause();
+      }
+      touchStart = null;
+    }, { passive: true });
+
+    // Pause/Restart
+    function togglePause() {
+      if (gameOver) return;
+      paused = !paused;
+      document.getElementById('pauseBtn').textContent = paused ? 'Resume' : 'Pause';
+      if (!paused) {
+        clearInterval(timerId);
+        timerId = setInterval(gameLoop, speedMs);
+      }
+    }
+    document.getElementById('pauseBtn').addEventListener('click', togglePause);
+    document.getElementById('restartBtn').addEventListener('click', () => {
+      resetGame();
+      document.getElementById('pauseBtn').textContent = 'Pause';
+    });
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+
+    // Init
+    resizeCanvas();
     resetGame();
   </script>
 </body>
-
+</html>
