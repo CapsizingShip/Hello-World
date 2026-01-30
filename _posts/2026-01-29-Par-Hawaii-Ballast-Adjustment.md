@@ -1,3 +1,9 @@
+---
+layout: post
+title: "My First Post"
+date: 2026-01-29
+---
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +17,7 @@
     }
     </style>
 </head>
+-->
 <body>
     <h1>Par Hawaii Ballast Adjustment</h1>
     <p>Cell highlighted in yellow for user input</p>
