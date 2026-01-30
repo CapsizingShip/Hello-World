@@ -14,6 +14,7 @@
 <body>
     <h1>Par Hawaii Ballast Adjustment</h1>
     <p>Cell highlighted in yellow for user input</p>
+    <p>Current Turntable Rotation Angle (Clockwise):</br><input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Distance from Buoy CL</th>
@@ -107,6 +108,29 @@
     </table>
     </br></br>
     <button type="button" onclick="calculate()">Calculate</button>
+    </br>
+    <table>
+        <tr>
+            <th>Current turntable counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1xt">0</td>
+            <td id="T1yt">0</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2xt">0</td>
+            <td id="T2yt">0</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3xt">0</td>
+            <td id="T3yt">0</td>
+        </tr>
+    </table>
     </br>
     <p>Results listed below</p>
     <table>
@@ -232,6 +256,7 @@
     -->
     <script>
         function calculate() {
+            const rotation = Number(document.getElementById("rotation").value)
             const X1 = Number(document.getElementById("X1").value)
             const X2 = Number(document.getElementById("X2").value)
             const X3 = Number(document.getElementById("X3").value)
@@ -282,6 +307,18 @@
             document.getElementById("R5t").innerHTML = R5;
             document.getElementById("R6t").innerHTML = R6;
             */
+            let T1x = Math.sqrt(T1x**2+T1y**2)*Math.cos(Math.atan2(T1x,T1y)-rotation*Math.pi()/180)
+            let T1y = Math.sqrt(T1x**2+T1y**2)*Math.sin(Math.atan2(T1x,T1y)-rotation*Math.pi()/180)
+            let T2x = Math.sqrt(T2x**2+T2y**2)*Math.cos(Math.atan2(T2x,T2y)-rotation*Math.pi()/180)
+            let T2y = Math.sqrt(T2x**2+T2y**2)*Math.sin(Math.atan2(T2x,T2y)-rotation*Math.pi()/180)
+            let T3x = Math.sqrt(T3x**2+T3y**2)*Math.cos(Math.atan2(T3x,T3y)-rotation*Math.pi()/180)
+            let T3y = Math.sqrt(T3x**2+T3y**2)*Math.sin(Math.atan2(T3x,T3y)-rotation*Math.pi()/180)
+            document.getElementById("T1xt").innerHTML = T1x;
+            document.getElementById("T1yt").innerHTML = T1y;
+            document.getElementById("T2xt").innerHTML = T2x;
+            document.getElementById("T2yt").innerHTML = T2y;
+            document.getElementById("T3xt").innerHTML = T3x;
+            document.getElementById("T3yt").innerHTML = T3y;
             let weight = R1+R2+R3+R4+R5+R6;
             let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/1000;
             let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/1000;
