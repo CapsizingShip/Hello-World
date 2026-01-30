@@ -1,3 +1,9 @@
+---
+layout: post
+title: "My Second Post"
+date: 2026-01-31
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
