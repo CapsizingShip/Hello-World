@@ -11,7 +11,6 @@ date: 2026-01-30
   <title>Snake Game (Mobile)</title>
   <style>
     :root {
-      --bg: #111;
       --panel: #222;
       --accent: #4caf50;
       --accent2: #81c784;
