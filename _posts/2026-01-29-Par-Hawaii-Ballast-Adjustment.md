@@ -3,25 +3,11 @@ layout: post
 title: "My First Post"
 date: 2026-01-29
 ---
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    </style>
-</head>
--->
+
 <body>
     <h1>Par Hawaii Ballast Adjustment</h1>
     <p>Cell highlighted in yellow for user input</p>
-    <p>Current Turntable Rotation Angle (Clockwise):</br><input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
+    <p>Current Turntable Rotation Angle (Clockwise):<input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Distance from Buoy CL</th>
@@ -59,7 +45,6 @@ date: 2026-01-29
             <td><input type="number" id="Y6" name="Y6" value="4763" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
-    </br>
     <table>
         <tr>
             <th>Turntable original counter weight location</th>
@@ -82,7 +67,6 @@ date: 2026-01-29
             <td id="T3y">-1064.1</td>
         </tr>
     </table>
-    </br>
     <table>
         <tr>
             <th>Loadcell #</th>
@@ -113,9 +97,7 @@ date: 2026-01-29
             <td><input type="number" id="R6" name="R6" value="46.723" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
-    </br></br>
     <button type="button" onclick="calculate()">Calculate</button>
-    </br>
     <p>Results listed below</p>
     <table>
         <tr>
@@ -139,7 +121,6 @@ date: 2026-01-29
             <td id="T3yt">0</td>
         </tr>
     </table>
-    </br>
     <table>
         <tr>
             <td>Total Weight (MT)</td>
@@ -158,7 +139,6 @@ date: 2026-01-29
             <td id="CoGy"></td>
         </tr>
     </table>
-    </br>
     <table>
         <tr>
             <th>Ballast Adjustment</th>
@@ -178,7 +158,6 @@ date: 2026-01-29
         </tr>
     </table>
     <!--
-    </br></br>
     <table>
       <tr>
           <th>Distance from Buoy CL</th>
@@ -351,4 +330,3 @@ date: 2026-01-29
         }
     </script>
 </body>
-</html>
