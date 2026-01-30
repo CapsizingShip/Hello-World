@@ -4,7 +4,6 @@ title: "Sensei Snake Game"
 date: 2026-01-30
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
