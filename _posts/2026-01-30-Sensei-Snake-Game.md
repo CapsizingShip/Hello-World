@@ -7,7 +7,9 @@ date: 2026-01-30
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!--
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  -->
   <title>Snake Game (Mobile)</title>
   <style>
     :root {
