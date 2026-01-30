@@ -16,7 +16,6 @@ date: 2026-01-30
       --accent2: #81c784;
       --food: #e53935;
       --grid: #333;
-      --text: #eee;
     }
     * { box-sizing: border-box; }
     body {
