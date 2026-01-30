@@ -97,7 +97,7 @@ date: 2026-01-29
         </tr>
     </table>
     <button type="button" onclick="calculate()">Calculate</button>
-    <br />
+    <p></p>
     <p>Results listed below</p>
     <table>
         <tr>
