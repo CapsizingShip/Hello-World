@@ -109,6 +109,7 @@
     </br></br>
     <button type="button" onclick="calculate()">Calculate</button>
     </br>
+    <p>Results listed below</p>
     <table>
         <tr>
             <th>Current turntable counter weight location</th>
@@ -132,7 +133,6 @@
         </tr>
     </table>
     </br>
-    <p>Results listed below</p>
     <table>
         <tr>
             <td>Total Weight (MT)</td>
@@ -269,12 +269,12 @@
             const Y4 = Number(document.getElementById("Y4").value)
             const Y5 = Number(document.getElementById("Y5").value)
             const Y6 = Number(document.getElementById("Y6").value)
-            const T1x = Number(document.getElementById("T1x").textContent)
-            const T1y = Number(document.getElementById("T1y").textContent)
-            const T2x = Number(document.getElementById("T2x").textContent)
-            const T2y = Number(document.getElementById("T2y").textContent)
-            const T3x = Number(document.getElementById("T3x").textContent)
-            const T3y = Number(document.getElementById("T3y").textContent)
+            var T1x = Number(document.getElementById("T1x").textContent)
+            var T1y = Number(document.getElementById("T1y").textContent)
+            var T2x = Number(document.getElementById("T2x").textContent)
+            var T2y = Number(document.getElementById("T2y").textContent)
+            var T3x = Number(document.getElementById("T3x").textContent)
+            var T3y = Number(document.getElementById("T3y").textContent)
             const R1 = Number(document.getElementById("R1").value)
             const R2 = Number(document.getElementById("R2").value)
             const R3 = Number(document.getElementById("R3").value)
@@ -307,18 +307,24 @@
             document.getElementById("R5t").innerHTML = R5;
             document.getElementById("R6t").innerHTML = R6;
             */
-            let T1x = Math.sqrt(T1x**2+T1y**2)*Math.cos(Math.atan2(T1x,T1y)-rotation*Math.pi()/180);
-            let T1y = Math.sqrt(T1x**2+T1y**2)*Math.sin(Math.atan2(T1x,T1y)-rotation*Math.pi()/180);
-            let T2x = Math.sqrt(T2x**2+T2y**2)*Math.cos(Math.atan2(T2x,T2y)-rotation*Math.pi()/180);
-            let T2y = Math.sqrt(T2x**2+T2y**2)*Math.sin(Math.atan2(T2x,T2y)-rotation*Math.pi()/180);
-            let T3x = Math.sqrt(T3x**2+T3y**2)*Math.cos(Math.atan2(T3x,T3y)-rotation*Math.pi()/180);
-            let T3y = Math.sqrt(T3x**2+T3y**2)*Math.sin(Math.atan2(T3x,T3y)-rotation*Math.pi()/180);
-            document.getElementById("T1xt").innerHTML = T1x;
-            document.getElementById("T1yt").innerHTML = T1y;
-            document.getElementById("T2xt").innerHTML = T2x;
-            document.getElementById("T2yt").innerHTML = T2y;
-            document.getElementById("T3xt").innerHTML = T3x;
-            document.getElementById("T3yt").innerHTML = T3y;
+            let T1x2 = T1x;
+            let T1y2 = T1y;
+            let T2x2 = T2x;
+            let T2y2 = T2y;
+            let T3x2 = T3x;
+            let T3y2 = T3y;
+            T1x = Math.sqrt(T1x2**2+T1y2**2)*Math.cos(Math.atan2(T1y2,T1x2)-rotation*Math.PI/180);
+            T1y = Math.sqrt(T1x2**2+T1y2**2)*Math.sin(Math.atan2(T1y2,T1x2)-rotation*Math.PI/180);
+            T2x = Math.sqrt(T2x2**2+T2y2**2)*Math.cos(Math.atan2(T2y2,T2x2)-rotation*Math.PI/180);
+            T2y = Math.sqrt(T2x2**2+T2y2**2)*Math.sin(Math.atan2(T2y2,T2x2)-rotation*Math.PI/180);
+            T3x = Math.sqrt(T3x2**2+T3y2**2)*Math.cos(Math.atan2(T3y2,T3x2)-rotation*Math.PI/180);
+            T3y = Math.sqrt(T3x2**2+T3y2**2)*Math.sin(Math.atan2(T3y2,T3x2)-rotation*Math.PI/180);
+            document.getElementById("T1xt").innerHTML = T1x.toFixed(0);
+            document.getElementById("T1yt").innerHTML = T1y.toFixed(0);
+            document.getElementById("T2xt").innerHTML = T2x.toFixed(0);
+            document.getElementById("T2yt").innerHTML = T2y.toFixed(0);
+            document.getElementById("T3xt").innerHTML = T3x.toFixed(0);
+            document.getElementById("T3yt").innerHTML = T3y.toFixed(0);
             let weight = R1+R2+R3+R4+R5+R6;
             let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/1000;
             let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/1000;
