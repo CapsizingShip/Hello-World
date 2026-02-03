@@ -1,0 +1,332 @@
+---
+layout: post
+title: "Par Hawaii Ballast Adjustment"
+date: 2026-01-29
+---
+
+<body>
+    <p>Cell highlighted in yellow for user input</p>
+    <p>Current Turntable Rotation Angle (Clockwise):<input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
+    <table>
+        <tr>
+            <th>Distance from Buoy CL</th>
+            <th>X (mm)</th>
+            <th>Y (mm)</th>
+        </tr>
+        <tr>
+            <th>Loadcell 1</th>
+            <td><input type="number" id="X1" name="X1" value="2750" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y1" name="Y1" value="4763" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <th>Loadcell 2</th>
+            <td><input type="number" id="X2" name="X2" value="5500" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y2" name="Y2" value="0" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <th>Loadcell 3</th>
+            <td><input type="number" id="X3" name="X3" value="2750" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y3" name="Y3" value="-4763" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <th>Loadcell 4</th>
+            <td><input type="number" id="X4" name="X4" value="-2750" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y4" name="Y4" value="-4763" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <th>Loadcell 5</th>
+            <td><input type="number" id="X5" name="X5" value="-5500" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y5" name="Y5" value="0" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <th>Loadcell 6</th>
+            <td><input type="number" id="X6" name="X6" value="-2750" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="Y6" name="Y6" value="4763" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Turntable original counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1x">0</td>
+            <td id="T1y">6915.8</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2x">6734.1</td>
+            <td id="T2y">1064.1</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3x">6734.1</td>
+            <td id="T3y">-1064.1</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Loadcell #</th>
+            <th>Readings(MT)</th>
+        </tr>
+        <tr>
+            <td>Loadcell 1</td>
+            <td><input type="number" id="R1" name="R1" value="47.413" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 2</td>
+            <td><input type="number" id="R2" name="R2" value="47.413" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 3</td>
+            <td><input type="number" id="R3" name="R3" value="46.663" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 4</td>
+            <td><input type="number" id="R4" name="R4" value="46.663" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 5</td>
+            <td><input type="number" id="R5" name="R5" value="46.723" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 6</td>
+            <td><input type="number" id="R6" name="R6" value="46.723" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+    </table>
+    <button type="button" onclick="calculate()">Calculate</button>
+    <p></p>
+    <p>Results listed below</p>
+    <table>
+        <tr>
+            <th>Current turntable counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1xt">0</td>
+            <td id="T1yt">0</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2xt">0</td>
+            <td id="T2yt">0</td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3xt">0</td>
+            <td id="T3yt">0</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Total Weight (MT)</td>
+            <td id="weight" style="width: 150px;"></td>
+        </tr>
+        <tr>
+            <td>Heeling Moment (MT.m)</td>
+            <td id="resultMoment"></td>
+        </tr>
+        <tr>
+            <td>CoGx (mm)</td>
+            <td id="CoGx"></td>
+        </tr>
+        <tr>
+            <td>CoGy (mm)</td>
+            <td id="CoGy"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Ballast Adjustment</th>
+            <th>Weight (MT)</th>
+        </tr>
+        <tr>
+            <td>T1</td>
+            <td id="T1Adjust"></td>
+        </tr>
+        <tr>
+            <td>T2</td>
+            <td id="T2Adjust"></td>
+        </tr>
+        <tr>
+            <td>T3</td>
+            <td id="T3Adjust"></td>
+        </tr>
+    </table>
+    <!--
+    <table>
+      <tr>
+          <th>Distance from Buoy CL</th>
+          <th>Loadcell 1</th>
+          <th>Loadcell 2</th>
+          <th>Loadcell 3</th>
+          <th>Loadcell 4</th>
+          <th>Loadcell 5</th>
+          <th>Loadcell 6</th>
+      </tr>
+      <tr>
+          <td>X (mm)</td>
+          <td id="X1t"></td>
+          <td id="X2t"></td>
+          <td id="X3t"></td>
+          <td id="X4t"></td>
+          <td id="X5t"></td>
+          <td id="X6t"></td>
+      </tr>
+      <tr>
+          <td>Y (mm)</td>
+          <td id="Y1t"></td>
+          <td id="Y2t"></td>
+          <td id="Y3t"></td>
+          <td id="Y4t"></td>
+          <td id="Y5t"></td>
+          <td id="Y6t"></td>
+      </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Turntable counter weight location</th>
+            <th>X(mm)</th>
+            <th>Y(mm)</th>
+        </tr>
+        <tr>
+            <td>T1 (Max 21.2MT)</td>
+            <td id="T1xt"></td>
+            <td id="T1yt"></td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T2xt"></td>
+            <td id="T2yt"></td>
+        </tr>
+        <tr>
+            <td>T2 (Max 12.9MT)</td>
+            <td id="T3xt"></td>
+            <td id="T3yt"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Loadcell #</th>
+            <th>Readings(MT)</th>
+        </tr>
+        <tr>
+            <td>Loadcell 1</td>
+            <td id="R1t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 2</td>
+            <td id="R2t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 3</td>
+            <td id="R3t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 4</td>
+            <td id="R4t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 5</td>
+            <td id="R5t"></td>
+        </tr>
+        <tr>
+            <td>Loadcell 6</td>
+            <td id="R6t"></td>
+        </tr>
+    </table>
+    -->
+    <script>
+        function calculate() {
+            const rotation = Number(document.getElementById("rotation").value)
+            const X1 = Number(document.getElementById("X1").value)
+            const X2 = Number(document.getElementById("X2").value)
+            const X3 = Number(document.getElementById("X3").value)
+            const X4 = Number(document.getElementById("X4").value)
+            const X5 = Number(document.getElementById("X5").value)
+            const X6 = Number(document.getElementById("X6").value)
+            const Y1 = Number(document.getElementById("Y1").value)
+            const Y2 = Number(document.getElementById("Y2").value)
+            const Y3 = Number(document.getElementById("Y3").value)
+            const Y4 = Number(document.getElementById("Y4").value)
+            const Y5 = Number(document.getElementById("Y5").value)
+            const Y6 = Number(document.getElementById("Y6").value)
+            var T1x = Number(document.getElementById("T1x").textContent)
+            var T1y = Number(document.getElementById("T1y").textContent)
+            var T2x = Number(document.getElementById("T2x").textContent)
+            var T2y = Number(document.getElementById("T2y").textContent)
+            var T3x = Number(document.getElementById("T3x").textContent)
+            var T3y = Number(document.getElementById("T3y").textContent)
+            const R1 = Number(document.getElementById("R1").value)
+            const R2 = Number(document.getElementById("R2").value)
+            const R3 = Number(document.getElementById("R3").value)
+            const R4 = Number(document.getElementById("R4").value)
+            const R5 = Number(document.getElementById("R5").value)
+            const R6 = Number(document.getElementById("R6").value)
+            /*
+            document.getElementById("X1t").innerHTML = X1;
+            document.getElementById("X2t").innerHTML = X2;
+            document.getElementById("X3t").innerHTML = X3;
+            document.getElementById("X4t").innerHTML = X4;
+            document.getElementById("X5t").innerHTML = X5;
+            document.getElementById("X6t").innerHTML = X6;
+            document.getElementById("Y1t").innerHTML = Y1;
+            document.getElementById("Y2t").innerHTML = Y2;
+            document.getElementById("Y3t").innerHTML = Y3;
+            document.getElementById("Y4t").innerHTML = Y4;
+            document.getElementById("Y5t").innerHTML = Y5;
+            document.getElementById("Y6t").innerHTML = Y6;
+            document.getElementById("T1xt").innerHTML = T1x;
+            document.getElementById("T1yt").innerHTML = T1y;
+            document.getElementById("T2xt").innerHTML = T2x;
+            document.getElementById("T2yt").innerHTML = T2y;
+            document.getElementById("T3xt").innerHTML = T3x;
+            document.getElementById("T3yt").innerHTML = T3y;
+            document.getElementById("R1t").innerHTML = R1;
+            document.getElementById("R2t").innerHTML = R2;
+            document.getElementById("R3t").innerHTML = R3;
+            document.getElementById("R4t").innerHTML = R4;
+            document.getElementById("R5t").innerHTML = R5;
+            document.getElementById("R6t").innerHTML = R6;
+            */
+            let T1x2 = T1x;
+            let T1y2 = T1y;
+            let T2x2 = T2x;
+            let T2y2 = T2y;
+            let T3x2 = T3x;
+            let T3y2 = T3y;
+            T1x = Math.sqrt(T1x2**2+T1y2**2)*Math.cos(Math.atan2(T1y2,T1x2)-rotation*Math.PI/180);
+            T1y = Math.sqrt(T1x2**2+T1y2**2)*Math.sin(Math.atan2(T1y2,T1x2)-rotation*Math.PI/180);
+            T2x = Math.sqrt(T2x2**2+T2y2**2)*Math.cos(Math.atan2(T2y2,T2x2)-rotation*Math.PI/180);
+            T2y = Math.sqrt(T2x2**2+T2y2**2)*Math.sin(Math.atan2(T2y2,T2x2)-rotation*Math.PI/180);
+            T3x = Math.sqrt(T3x2**2+T3y2**2)*Math.cos(Math.atan2(T3y2,T3x2)-rotation*Math.PI/180);
+            T3y = Math.sqrt(T3x2**2+T3y2**2)*Math.sin(Math.atan2(T3y2,T3x2)-rotation*Math.PI/180);
+            document.getElementById("T1xt").innerHTML = T1x.toFixed(0);
+            document.getElementById("T1yt").innerHTML = T1y.toFixed(0);
+            document.getElementById("T2xt").innerHTML = T2x.toFixed(0);
+            document.getElementById("T2yt").innerHTML = T2y.toFixed(0);
+            document.getElementById("T3xt").innerHTML = T3x.toFixed(0);
+            document.getElementById("T3yt").innerHTML = T3y.toFixed(0);
+            let weight = R1+R2+R3+R4+R5+R6;
+            let resultMomentX = (R1*X1+R2*X2+R3*X3+R4*X4+R5*X5+R6*X6)/1000;
+            let resultMomentY = (R1*Y1+R2*Y2+R3*Y3+R4*Y4+R5*Y5+R6*Y6)/1000;
+            let CoGx = resultMomentX*1000/weight;
+            let CoGy = resultMomentY*1000/weight;
+            let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
+            let T2Adjust = (resultMomentX*1000-(resultMomentY*1000*T1x/T1y))/(-T2x-T3x+(T2y+T3y)*T1x/T1y);
+            let T3Adjust = T2Adjust;
+            let T1Adjust = -(resultMomentY*1000+T2Adjust*(T2y+T3y))/T1y;
+            document.getElementById("weight").innerHTML = weight.toFixed(3);
+            document.getElementById("resultMoment").innerHTML = resultMoment.toFixed(3);
+            document.getElementById("CoGx").innerHTML = CoGx.toFixed(3);
+            document.getElementById("CoGy").innerHTML = CoGy.toFixed(3);
+            document.getElementById("T2Adjust").innerHTML = T2Adjust.toFixed(3);
+            document.getElementById("T3Adjust").innerHTML = T3Adjust.toFixed(3);
+            document.getElementById("T1Adjust").innerHTML = T1Adjust.toFixed(3);
+        }
+    </script>
+</body>
