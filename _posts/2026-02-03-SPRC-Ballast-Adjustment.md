@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Par Hawaii Ballast Adjustment"
-date: 2026-01-29
+title: "SPRC Ballast Adjustment"
+date: 2026-02-03
 ---
 
 <body>
