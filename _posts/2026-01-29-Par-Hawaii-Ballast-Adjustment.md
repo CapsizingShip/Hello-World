@@ -317,6 +317,9 @@ date: 2026-01-29
             let CoGx = resultMomentX*1000/weight;
             let CoGy = resultMomentY*1000/weight;
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
+            if (T1y == 0) { 
+                T1y == 0.00000001;
+                }
             let T2Adjust = (resultMomentX*1000-(resultMomentY*1000*T1x/T1y))/(-T2x-T3x+(T2y+T3y)*T1x/T1y);
             let T3Adjust = T2Adjust;
             let T1Adjust = -(resultMomentY*1000+T2Adjust*(T2y+T3y))/T1y;
