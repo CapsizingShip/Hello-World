@@ -70,6 +70,10 @@ date: 2026-02-03
     </table>
     <table>
         <tr>
+            <td>Average Draft (mm)</td>
+            <td id="averageDraft" style="width: 150px;"></td>
+        </tr>
+        <tr>
             <td>Total Weight (MT)</td>
             <td id="weight" style="width: 150px;"></td>
         </tr>
@@ -137,6 +141,7 @@ date: 2026-02-03
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
             let T2Adjust = ((-resultMomentY*1000/weight+resultMomentX*1000/weight*T1y/T1x)/(-T1y*T2x/T1x+T2y))*weight;
             let T1Adjust = ((-resultMomentX*1000/weight-T2Adjust/weight*T2x)/T1x)*weight;
+            document.getElementById("averageDraft").innerHTML = averageDraft.toFixed(3);
             document.getElementById("weight").innerHTML = weight.toFixed(3);
             document.getElementById("resultMoment").innerHTML = resultMoment.toFixed(3);
             document.getElementById("resultMomentX").innerHTML = resultMomentX.toFixed(3);
