@@ -24,7 +24,7 @@ date: 2026-02-03
             <td id="T2y">453</td>
         </tr>
     </table>
-    <img src="/assets/images/SPRC_Draft_Location.png" alt="SPRC Draft Location" style="width:500px;">
+    <img src="/assets/images/SPRC_Draft_Location.png" alt="SPRC Draft Location">
     <table>
         <tr>
             <th>Draft Mark</th>
