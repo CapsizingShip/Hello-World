@@ -6,44 +6,7 @@ date: 2026-02-03
 
 <body>
     <p>Cell highlighted in yellow for user input</p>
-    <p>Current Turntable Rotation Angle (Clockwise):<input type="number" id="rotation" name="rotation" value="0" style="background-color: BlanchedAlmond;"></p>
-    <table>
-        <tr>
-            <th>Distance from Buoy CL</th>
-            <th>X (mm)</th>
-            <th>Y (mm)</th>
-        </tr>
-        <tr>
-            <th>Loadcell 1</th>
-            <td><input type="number" id="X1" name="X1" value="2750" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y1" name="Y1" value="4763" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <th>Loadcell 2</th>
-            <td><input type="number" id="X2" name="X2" value="5500" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y2" name="Y2" value="0" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <th>Loadcell 3</th>
-            <td><input type="number" id="X3" name="X3" value="2750" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y3" name="Y3" value="-4763" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <th>Loadcell 4</th>
-            <td><input type="number" id="X4" name="X4" value="-2750" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y4" name="Y4" value="-4763" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <th>Loadcell 5</th>
-            <td><input type="number" id="X5" name="X5" value="-5500" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y5" name="Y5" value="0" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <th>Loadcell 6</th>
-            <td><input type="number" id="X6" name="X6" value="-2750" style="background-color: BlanchedAlmond;"></td>
-            <td><input type="number" id="Y6" name="Y6" value="4763" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-    </table>
+    <p>Current Turntable Rotation Angle (Counter-Clockwise):<input type="number" id="rotation" name="rotation" value="254" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Turntable original counter weight location</th>
@@ -52,48 +15,35 @@ date: 2026-02-03
         </tr>
         <tr>
             <td>T1 (Max 21.2MT)</td>
-            <td id="T1x">0</td>
-            <td id="T1y">6915.8</td>
+            <td id="T1x">6778</td>
+            <td id="T1y">2317</td>
         </tr>
         <tr>
             <td>T2 (Max 12.9MT)</td>
-            <td id="T2x">6734.1</td>
-            <td id="T2y">1064.1</td>
-        </tr>
-        <tr>
-            <td>T2 (Max 12.9MT)</td>
-            <td id="T3x">6734.1</td>
-            <td id="T3y">-1064.1</td>
+            <td id="T2x">7149</td>
+            <td id="T2y">453</td>
         </tr>
     </table>
     <table>
         <tr>
-            <th>Loadcell #</th>
+            <th>Draft Mark</th>
             <th>Readings(MT)</th>
         </tr>
         <tr>
-            <td>Loadcell 1</td>
-            <td><input type="number" id="R1" name="R1" value="47.413" style="background-color: BlanchedAlmond;"></td>
+            <td>A  </td>
+            <td><input type="number" id="R1" name="R1" value="2206" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>Loadcell 2</td>
-            <td><input type="number" id="R2" name="R2" value="47.413" style="background-color: BlanchedAlmond;"></td>
+            <td>B</td>
+            <td><input type="number" id="R2" name="R2" value="1994" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>Loadcell 3</td>
-            <td><input type="number" id="R3" name="R3" value="46.663" style="background-color: BlanchedAlmond;"></td>
+            <td>C</td>
+            <td><input type="number" id="R3" name="R3" value="2194" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>Loadcell 4</td>
-            <td><input type="number" id="R4" name="R4" value="46.663" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <td>Loadcell 5</td>
-            <td><input type="number" id="R5" name="R5" value="46.723" style="background-color: BlanchedAlmond;"></td>
-        </tr>
-        <tr>
-            <td>Loadcell 6</td>
-            <td><input type="number" id="R6" name="R6" value="46.723" style="background-color: BlanchedAlmond;"></td>
+            <td>D</td>
+            <td><input type="number" id="R4" name="R4" value="2406" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
     <button type="button" onclick="calculate()">Calculate</button>
