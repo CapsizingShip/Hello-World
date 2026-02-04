@@ -7,7 +7,7 @@ date: 2026-02-03
 <body>
     <p>Cell highlighted in yellow for user input</p>
     <img src="/Hello-World/assets/images/SPRC_Buoy_TrimTest.png" alt="SPRC_Buoy_TrimTest">
-    <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 180+74 for during lifting) <br> <input type="number" id="rotation" name="rotation" value="254" style="background-color: BlanchedAlmond;"></p>
+    <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 180+74 for during lifting): <br> <input type="number" id="rotation" name="rotation" value="254" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Turntable original counter weight location</th>
