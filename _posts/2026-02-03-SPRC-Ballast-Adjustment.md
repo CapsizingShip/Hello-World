@@ -7,7 +7,7 @@ date: 2026-02-03
 <body>
     <p>Cell highlighted in yellow for user input</p>
     <img src="/Hello-World/assets/images/SPRC_Buoy_TrimTest.png" alt="SPRC_Buoy_TrimTest">
-    <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 180+74 for during lifting): <br> <input type="number" id="rotation" name="rotation" value="254" style="background-color: BlanchedAlmond;"></p>
+    <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 74 deg for during lifting): <br> <input type="number" id="rotation" name="rotation" value="74" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Turntable original counter weight location</th>
@@ -32,19 +32,19 @@ date: 2026-02-03
             <th>Readings(MT)</th>
         </tr>
         <tr>
-            <td>A  </td>
+            <td>A (0 deg)  </td>
             <td><input type="number" id="R1" name="R1" value="2206" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>B</td>
+            <td>B (90 deg)</td>
             <td><input type="number" id="R2" name="R2" value="1994" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>C</td>
+            <td>C (180 deg)</td>
             <td><input type="number" id="R3" name="R3" value="2194" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>D</td>
+            <td>D (270 deg)</td>
             <td><input type="number" id="R4" name="R4" value="2406" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
