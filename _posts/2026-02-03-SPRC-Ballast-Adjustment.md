@@ -74,10 +74,6 @@ date: 2026-02-03
             <td id="averageDraft" style="width: 150px;"></td>
         </tr>
         <tr>
-            <td>Total Weight (MT)</td>
-            <td id="weight" style="width: 150px;"></td>
-        </tr>
-        <tr>
             <td>Heeling Moment X (MT.m)</td>
             <td id="resultMomentX"></td>
         </tr>
