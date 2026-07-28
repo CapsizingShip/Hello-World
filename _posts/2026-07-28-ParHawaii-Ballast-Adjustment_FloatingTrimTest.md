@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "SPRC Ballast Adjustment"
-date: 2026-02-03
+title: "Par Hawaii Ballast Adjustment - Floating Condition"
+date: 2026-07-28
 ---
 
 <body>
