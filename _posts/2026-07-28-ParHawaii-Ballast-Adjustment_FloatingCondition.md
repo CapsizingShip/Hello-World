@@ -53,11 +53,11 @@ date: 2026-07-28
             <td><input type="number" id="R4" name="R4" value="3291" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>D (240 deg)</td>
+            <td>E (240 deg)</td>
             <td><input type="number" id="R5" name="R5" value="3276" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>D (300 deg)</td>
+            <td>F (300 deg)</td>
             <td><input type="number" id="R6" name="R6" value="3318" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
