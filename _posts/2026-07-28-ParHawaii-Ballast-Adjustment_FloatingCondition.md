@@ -30,7 +30,6 @@ date: 2026-07-28
             <td id="T3y">-1064.1</td>
         </tr>
     </table>
-    <img src="/Hello-World/assets/images/SPRC_Draft_Location.png" alt="SPRC_Draft_Location">
     <table>
         <tr>
             <th>Draft Mark</th>
