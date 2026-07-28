@@ -41,16 +41,24 @@ date: 2026-07-28
             <td><input type="number" id="R1" name="R1" value="2100" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>B (90 deg)</td>
+            <td>B (60 deg)</td>
             <td><input type="number" id="R2" name="R2" value="2000" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>C (180 deg)</td>
+            <td>C (120 deg)</td>
             <td><input type="number" id="R3" name="R3" value="2300" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
-            <td>D (270 deg)</td>
+            <td>D (180 deg)</td>
             <td><input type="number" id="R4" name="R4" value="2500" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>D (240 deg)</td>
+            <td><input type="number" id="R5" name="R5" value="2500" style="background-color: BlanchedAlmond;"></td>
+        </tr>
+        <tr>
+            <td>D (300 deg)</td>
+            <td><input type="number" id="R6" name="R6" value="2500" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
     <button type="button" onclick="calculate()">Calculate</button>
