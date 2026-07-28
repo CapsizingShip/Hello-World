@@ -38,27 +38,27 @@ date: 2026-07-28
         </tr>
         <tr>
             <td>A (0 deg)  </td>
-            <td><input type="number" id="R1" name="R1" value="2100" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R1" name="R1" value="3375" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
             <td>B (60 deg)</td>
-            <td><input type="number" id="R2" name="R2" value="2000" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R2" name="R2" value="3390" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
             <td>C (120 deg)</td>
-            <td><input type="number" id="R3" name="R3" value="2300" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R3" name="R3" value="3348" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
             <td>D (180 deg)</td>
-            <td><input type="number" id="R4" name="R4" value="2500" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R4" name="R4" value="3291" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
             <td>D (240 deg)</td>
-            <td><input type="number" id="R5" name="R5" value="2500" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R5" name="R5" value="3276" style="background-color: BlanchedAlmond;"></td>
         </tr>
         <tr>
             <td>D (300 deg)</td>
-            <td><input type="number" id="R6" name="R6" value="2500" style="background-color: BlanchedAlmond;"></td>
+            <td><input type="number" id="R6" name="R6" value="3318" style="background-color: BlanchedAlmond;"></td>
         </tr>
     </table>
     <button type="button" onclick="calculate()">Calculate</button>
@@ -167,9 +167,9 @@ date: 2026-07-28
             let resultMomentX = degX*rightingMoment;
             let resultMomentY = degY*rightingMoment;
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
-            let T2Adjust = ((-resultMomentY*1000/weight+resultMomentX*1000/weight*T1y/T1x)/(-T1y*T2x/T1x+T2y))*weight/2;
+            let T2Adjust = ((-resultMomentY*1000/weight+resultMomentX*1000/weight*T1y/T1x)/(-T1y*(T2x+T3x)/2/T1x+(T2y+T3y)/2))*weight/2;
             let T3Adjust = T2Adjust;
-            let T1Adjust = ((-resultMomentX*1000/weight-T2Adjust*2/weight*T2x)/T1x)*weight;
+            let T1Adjust = ((-resultMomentX*1000/weight-T2Adjust/weight*T2x-T3Adjust/weight*T3x)/T1x)*weight;
             document.getElementById("averageDraft").innerHTML = averageDraft.toFixed(3);
             document.getElementById("resultMoment").innerHTML = resultMoment.toFixed(3);
             document.getElementById("resultMomentX").innerHTML = resultMomentX.toFixed(3);
