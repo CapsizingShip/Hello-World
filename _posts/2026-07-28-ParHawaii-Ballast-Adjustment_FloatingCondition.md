@@ -15,14 +15,19 @@ date: 2026-07-28
             <th>Y(mm)</th>
         </tr>
         <tr>
-            <td>T1 (Max 21.2MT)</td>
-            <td id="T1x">6778</td>
-            <td id="T1y">2317</td>
+            <td>T1 (Max 25MT)</td>
+            <td id="T1x">0</td>
+            <td id="T1y">6916</td>
         </tr>
         <tr>
-            <td>T2 (Max 12.9MT)</td>
-            <td id="T2x">7149</td>
-            <td id="T2y">453</td>
+            <td>T2 (Max 11MT)</td>
+            <td id="T2x">6734.1</td>
+            <td id="T2y">1064.1</td>
+        </tr>
+        <tr>
+            <td>T3 (Max 11MT)</td>
+            <td id="T3x">6734.1</td>
+            <td id="T3y">-1064.1</td>
         </tr>
     </table>
     <img src="/Hello-World/assets/images/SPRC_Draft_Location.png" alt="SPRC_Draft_Location">
@@ -115,9 +120,9 @@ date: 2026-07-28
             let T1y2 = T1y;
             let T2x2 = T2x;
             let T2y2 = T2y;
-            const TPM = 106.51;
-            const L = 12.02;
-            const rightingMoment = 5.2;
+            const TPM = 95.93;
+            const L = 11.52;
+            const rightingMoment = 1.56;
             T1x = Math.sqrt(T1x2**2+T1y2**2)*Math.cos(Math.atan2(T1y2,T1x2)+rotation*Math.PI/180);
             T1y = Math.sqrt(T1x2**2+T1y2**2)*Math.sin(Math.atan2(T1y2,T1x2)+rotation*Math.PI/180);
             T2x = Math.sqrt(T2x2**2+T2y2**2)*Math.cos(Math.atan2(T2y2,T2x2)+rotation*Math.PI/180);
