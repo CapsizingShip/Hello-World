@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Par Hawaii Ballast Adjustment"
+title: "Par Hawaii Ballast Adjustment - Trim Test Loadcell"
 date: 2026-01-29
 ---
 
