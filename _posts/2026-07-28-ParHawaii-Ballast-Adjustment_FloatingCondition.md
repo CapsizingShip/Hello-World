@@ -7,7 +7,7 @@ date: 2026-07-28
 <body>
     <p>Cell highlighted in yellow for user input</p>
     <img src="/Hello-World/assets/images/ParHawaii_BallastArrangement.png" alt="ParHawaii_Arrangement">
-    <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 10 deg during lifting): <br> <input type="number" id="rotation" name="rotation" value="10" style="background-color: BlanchedAlmond;"></p>
+    <p>Current Turntable Rotation Angle (Counter-Clockwise) (eg. 10 deg of TT x-axis counter-clockwise from Buoy x-axis): <br> <input type="number" id="rotation" name="rotation" value="10" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
             <th>Turntable original counter weight location</th>
