@@ -6,7 +6,7 @@ date: 2026-07-28
 
 <body>
     <p>Cell highlighted in yellow for user input</p>
-    <img src="/Hello-World/assets/images/SPRC_Buoy_TrimTest.png" alt="SPRC_Buoy_TrimTest">
+    <img src="/Hello-World/assets/images/ParHawaii_BallastArrangement.png" alt="ParHawaii_Arrangement">
     <p>Current Turntable Rotation Angle (Counter-Clockwise from global axis) (eg. 74 deg for during lifting): <br> <input type="number" id="rotation" name="rotation" value="74" style="background-color: BlanchedAlmond;"></p>
     <table>
         <tr>
