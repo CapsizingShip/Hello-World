@@ -102,6 +102,14 @@ date: 2026-07-28
             <td>Heeling Moment (MT.m)</td>
             <td id="resultMoment"></td>
         </tr>
+        <tr>
+            <td>Heeling Angle X (deg)</td>
+            <td id="degX"></td>
+        </tr>
+        <tr>
+            <td>Heeling Angle Y (deg)</td>
+            <td id="degY"></td>
+        </tr>
     </table>
     <table>
         <tr>
@@ -177,6 +185,8 @@ date: 2026-07-28
             document.getElementById("T2Adjust").innerHTML = T2Adjust.toFixed(3);
             document.getElementById("T3Adjust").innerHTML = T3Adjust.toFixed(3);
             document.getElementById("T1Adjust").innerHTML = T1Adjust.toFixed(3);
+            document.getElementById("degX").innerHTML = degX.toFixed(3);
+            document.getElementById("degY").innerHTML = degY.toFixed(3);
         }
     </script>
 </body>
