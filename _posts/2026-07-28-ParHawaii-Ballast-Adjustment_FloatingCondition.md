@@ -169,7 +169,7 @@ date: 2026-07-28
             let resultMoment = Math.sqrt(resultMomentX**2 + resultMomentY**2);
             let T2Adjust = ((-resultMomentY*1000/weight+resultMomentX*1000/weight*T1y/T1x)/(-T1y*T2x/T1x+T2y))*weight/2;
             let T3Adjust = T2Adjust;
-            let T1Adjust = ((-resultMomentX*1000/weight-T2Adjust/weight*T2x)/T1x)*weight;
+            let T1Adjust = ((-resultMomentX*1000/weight-T2Adjust*2/weight*T2x)/T1x)*weight;
             document.getElementById("averageDraft").innerHTML = averageDraft.toFixed(3);
             document.getElementById("resultMoment").innerHTML = resultMoment.toFixed(3);
             document.getElementById("resultMomentX").innerHTML = resultMomentX.toFixed(3);
