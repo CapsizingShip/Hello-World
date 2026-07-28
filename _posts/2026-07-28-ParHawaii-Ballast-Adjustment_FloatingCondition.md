@@ -122,6 +122,7 @@ date: 2026-07-28
             <td id="T3Adjust"></td>
         </tr>
     </table>
+    <p>Positive ballast adjustment to add ballast weight, negative ballast adjustment to remove ballast weight.</p>
     <script>
         function calculate() {
             const rotation = Number(document.getElementById("rotation").value)
